@@ -29,5 +29,5 @@ Clicking the "Custom Path" button at the top right will display the custom gogo 
 
 ### API
 
-* `snd.pathinator:browser()
+* `snd.pathinator:browser()`
   * If you want to open the interface programmatically
