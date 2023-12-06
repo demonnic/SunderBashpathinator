@@ -1,39 +1,33 @@
 # SunderBashpathinator
 
+[[https://demonnic.github.io/gifs/SunderBashPathinator.gif]]
+
 ## UI for browsing bashing areas and managing a bashpath in Sunder
 
-This is a template project created by muddler. It's meant to give you the basic skeleton to get started.
-It is not a complete project, nor does it provide an example of every type of trigger scenario or keybinding corner case. It would make it even more difficult to clear out to make way for your own items.
-It **will** properly muddle and create an mpackage, however.
-For more detailed information on describing your triggers, scripts, etc in the json files, please see the [muddler wiki](https://github.com/demonnic/muddler/wiki)
-
-This space is where I would normally put the description of my package and what it does/why I made it. But if you have a README format you already like, feel free to ignore all this.
+This is for making it easier to browse the areas known by Sunder's basher. It also helps manage a custom gogo path named "custom" which you can run using `gogo custom`
 
 ## Installation
 
-It's a good idea to provide installation instructions. I like to include a command they can copy/paste into the Mudlet commandline. Like
+Copy and paste the following command into Mudlet to install or update the Sunder Bashpathinator
 
-`lua uninstallPackage("packageName") installPackage("https://somedomain.org/path/to/my/package/packageName.mpackage")`
+`lua uninstallPackage("SunderBashpathinator") installPackage("https://github.com/demonnic/SunderBashpathinator/releases/latest/download/SunderBashpathinator.mpackage")`
 
 ## Usage
 
-Brief introduction to the overall usage. Then break it down to specifics
+`sunder areas` will open the user window. You can click the `Area` or `Level` header to sort by either area name or level (or reversed if you click them again).
+
+Clicking the number of targets or items will print just that area, and print the actual details on the targets and items.
+
+Clicking the "Area List" button at the top left will print the full list out again.
+
+Clicking the "Custom Path" button at the top right will display the custom gogo path and give you controls to reorder the areas in the path.
 
 ### Aliases
 
-* `alias1 <param1>`
-  * description of what the alias does, and what param1 is if it exists
-    * example usage1
-    * optional example usage2, etc
-* `alias 2`
-  * and so on, and so forth
+* `sunder areas`
+  * brings up the interface
 
 ### API
 
-* `functionName(param1, param2)
-  * Then, do the same thing for any Lua API which you want them to be able to use.
-  * This part can be skipped if you have separate API documentation, but keep in mind the README.md file is accessible from the package manage in Mudlet, so this allows you to provide documentation within Mudlet, to a degree.
-
-## Final thoughts, how to contribute, thanks, things like that
-
-I like to put anything which doesn't fit with the above stuff here, at the end. It keeps the documentation like stuff at the top.
+* `snd.pathinator:browser()
+  * If you want to open the interface programmatically

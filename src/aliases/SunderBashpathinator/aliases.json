@@ -1,6 +1,6 @@
 [
   {
-    "name": "SunderBashpathinator",
-    "regex": "^SunderBashpathinator$"
+    "name": "Browse Areas",
+    "regex": "^[Ss]under [Aa]reas?$"
   }
 ]

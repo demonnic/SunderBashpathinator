@@ -1,8 +1,8 @@
 [
   {
-    "name": "SunderBashpathinator_example_script",
-    "eventHandlerList": [
-      "sysInstall"
-    ]
+    "name": "list manipulators"
+  },
+  {
+    "name": "Pathinator"
   }
 ]
