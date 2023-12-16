@@ -1,7 +1,7 @@
 snd = snd or {}
 snd.paths = snd.paths or {}
 snd.pathinator = snd.pathinator or {}
-snd.pathinator.sortBy = snd.pathinator.sortBy or "sortByName"
+snd.pathinator.sortBy = snd.pathinator.sortBy or "sortByLevelReverse"
 snd.paths.custom = snd.paths.custom or {}
 local filename = getMudletHomeDir() .. "/sunderPathinator.lua"
 snd.pathinator.buttonStyle = Geyser.StyleSheet:new([[
@@ -11,6 +11,26 @@ snd.pathinator.buttonStyle = Geyser.StyleSheet:new([[
   background-color: darkslategrey;
 ]])
 local textColor = "cyan"
+
+local function looped(tbl)
+  return #tbl > 1 and tbl[1] == tbl[#tbl]
+end
+local function loop(tbl)
+  local size = #tbl
+  local first = tbl[1]
+  if not looped(tbl) then
+    tbl[size + 1] = first
+  end
+  return tbl
+end
+
+local function unloop(tbl)
+  if looped(tbl) then
+    tbl[#tbl] = nil
+  end
+  return tbl
+end
+
 function snd.pathinator:browser()
   self.window = Geyser.UserWindow:new({
     name = "Sunder BashPathinator Window",
@@ -235,14 +255,33 @@ end
 
 function snd.pathinator:displayCustomPathList()
   local mc = self.console
+  local path = snd.paths.custom
   mc:clear()
   mc:cecho(string.format("<green><b>%-15s%-25s%-15s%-15s<reset></b>\n", "Index", "Area Name", "Level", "# of targets"))
-  for index, name in ipairs(snd.paths.custom) do
+  for index, name in ipairs(path) do
     self:displaySinglePathItem(index, name)
   end
+  local loopedPath = looped(path)
+  local function toggle_loop()
+    if loopedPath then
+      unloop(path)
+    else
+      loop(path)
+    end
+    self:displayCustomPathList()
+  end
+  local color = loopedPath and "<green>" or "<red>"
+  local action = loopedPath and "unloop" or "loop"
+  local tooltip = "Click to " .. action.. " the custom path"
+  local message = loopedPath and "Path is looped" or "Path is not looped"
+  mc:cechoLink(color .. message, toggle_loop, tooltip, true)
 end
 
 function snd.pathinator:displaySinglePathItem(index, name)
+  local path = snd.paths.custom
+  if index == #path and path[1] == name then
+    return
+  end
   local mc = snd.pathinator.console
   local top = function()
     table.top(snd.paths.custom, index)
