@@ -10,7 +10,7 @@ This is for making it easier to browse the areas known by Sunder's basher. It al
 
 Copy and paste the following command into Mudlet to install or update the Sunder Bashpathinator
 
-`lua uninstallPackage("SunderBashpathinator") tempTimer(0, [[installPackage("https://github.com/demonnic/SunderBashpathinator/releases/latest/download/SunderBashpathinator.mpackage"]])`
+`lua uninstallPackage("SunderBashpathinator") tempTimer(0, [[installPackage("https://github.com/demonnic/SunderBashpathinator/releases/latest/download/SunderBashpathinator.mpackage")]])`
 
 ## Usage
 
