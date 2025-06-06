@@ -124,16 +124,16 @@ end
 
 function snd.pathinator:loadAreas()
   local areas = {}
-  for _, area in ipairs(snd.areas) do
+  for name, area in pairs(snd.areas) do
     local entry = {
       level = area.level,
       targets = area.targets,
-      path = sunder_areaPaths[area.area] or {},
+      path = sunder_areaPaths[name] or {},
       items = area.items or {},
     }
     entry.sortingLevel = self:getLevelForSorting(entry.level)
-    entry.sortingName = stripName(area.area)
-    areas[area.area] = entry
+    entry.sortingName = stripName(name)
+    areas[name] = entry
   end
   self.areas = areas
 end
